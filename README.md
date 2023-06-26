@@ -13,3 +13,10 @@ All these projects are built with Vite + React.
 
 - [Live site](https://digital-business-card-8e5538.netlify.app/)
 - [Source code](https://github.com/helenclx/Scrimba-React-Solo-Projects/tree/main/1-digital-business-card)
+
+## Travel Journal
+
+![](./2-travel-journal/screenshot.png)
+
+- [Live site](https://travel-journal-2200c5.netlify.app/)
+- [Source code](https://github.com/helenclx/Scrimba-React-Solo-Projects/tree/main/2-travel-journal)
