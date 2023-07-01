@@ -21,7 +21,7 @@
 
 body {
     font-size: 1rem;
-    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    font-family: 'Source Pro', Arial, Helvetica, sans-serif;
     background: var(--body-bg);
     color: var(--body-text-color);
 }
@@ -34,7 +34,6 @@ body {
 
 h1 {
     color: var(--title-color);
-    font-weight: 700;
 }
 
 h2 {
