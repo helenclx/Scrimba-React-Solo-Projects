@@ -6,9 +6,10 @@ import { nanoid } from 'nanoid'
 
 export default function Quiz() {
     const [allQuizData, setAllQuizData] = React.useState(quizData);
-    
-    const randomQuizIndex = Math.floor(Math.random() * allQuizData.results.length);
-    const randomQuiz = allQuizData.results[randomQuizIndex];
+
+    let quizArr = allQuizData.results;
+    const randomQuizIndex = Math.floor(Math.random() * quizArr.length);
+    const randomQuiz = quizArr[randomQuizIndex];
 
     let optionArr = [...randomQuiz.incorrect_answers, randomQuiz.correct_answer];
     let optionArrTest = ["Option 1", "Option 2", "Option 3", "Option 4"];
@@ -16,18 +17,17 @@ export default function Quiz() {
     function shuffleArray(arr) {
         let index = arr.length;
         let randomIndex;
-      
         // While there remain elements to shuffle.
         while (index != 0) {
             // Pick a remaining element.
             randomIndex = Math.floor(Math.random() * index);
             index--;
-        
             // And swap it with the current element.
             [arr[index], arr[randomIndex]] = [arr[randomIndex], arr[index]];
         }
         return arr;
     }
+    const shuffledQuestions = shuffleArray(quizArr);
     const shuffledOptions = shuffleArray(optionArrTest);
 
     const optionEl = shuffledOptions.map((option, index) => {
