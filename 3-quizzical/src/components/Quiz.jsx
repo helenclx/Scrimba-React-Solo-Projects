@@ -13,7 +13,24 @@ export default function Quiz() {
     let optionArr = [...randomQuiz.incorrect_answers, randomQuiz.correct_answer];
     let optionArrTest = ["Option 1", "Option 2", "Option 3", "Option 4"];
 
-    const optionEl = optionArrTest.map((option, index) => {
+    function shuffleArray(arr) {
+        let index = arr.length;
+        let randomIndex;
+      
+        // While there remain elements to shuffle.
+        while (index != 0) {
+            // Pick a remaining element.
+            randomIndex = Math.floor(Math.random() * index);
+            index--;
+        
+            // And swap it with the current element.
+            [arr[index], arr[randomIndex]] = [arr[randomIndex], arr[index]];
+        }
+        return arr;
+    }
+    const shuffledOptions = shuffleArray(optionArrTest);
+
+    const optionEl = shuffledOptions.map((option, index) => {
         return (
             <span key={index}>
                 <input type="radio" id={`ans-${index}`} name="option"/>
