@@ -6,28 +6,28 @@ import { nanoid } from 'nanoid'
 
 export default function Quiz() {
     const [allQuizData, setAllQuizData] = React.useState(quizData);
+    
+    const randomQuizIndex = Math.floor(Math.random() * allQuizData.results.length);
+    const randomQuiz = allQuizData.results[randomQuizIndex];
+
+    let optionArr = [...randomQuiz.incorrect_answers, randomQuiz.correct_answer];
+    let optionArrTest = ["Option 1", "Option 2", "Option 3", "Option 4"];
+
+    const optionEl = optionArrTest.map((option, index) => {
+        return (
+            <span key={index}>
+                <input type="radio" id={`ans-${index}`} name="option"/>
+                <label htmlFor={`ans-${index}`}>{option} - Index: {index}</label>
+            </span>
+        )
+    });
 
     const questionEl = (
         <div className="question-container">
             <h2>This is a question</h2>
             <fieldset className="answer-field">
                 <legend className="sr-only">Select one answer:</legend>
-                <span>
-                    <input type="radio" id="ans-1" name="option"/>
-                    <label htmlFor="ans-1">Option 1</label>
-                </span>
-                <span>
-                    <input type="radio" id="ans-2" name="option"/>
-                    <label htmlFor="ans-2">Option 2</label>
-                </span>
-                <span>
-                    <input type="radio" id="ans-3" name="option"/>
-                    <label htmlFor="ans-3">Option 3</label>
-                </span>
-                <span>
-                    <input type="radio" id="ans-4" name="option"/>
-                    <label htmlFor="ans-4">Option 4</label>
-                </span>
+                {optionEl}
             </fieldset>
         </div>
     )
