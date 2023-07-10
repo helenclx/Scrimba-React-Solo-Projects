@@ -41,6 +41,7 @@ input[name="option"] {
 
 input[name="option"] + label {
     border: solid 0.1rem var(--answer-border);
+    background: white;
     border-radius: 0.8rem;
     padding: 0.25rem 1rem;
     display: grid;
