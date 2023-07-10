@@ -33,7 +33,7 @@ export default function Quiz() {
     const optionEl = shuffledOptions.map((option, index) => {
         return (
             <span key={index}>
-                <input type="radio" id={`ans-${index}`} name="option"/>
+                <input type="radio" id={`ans-${index}`} name="option" className="quiz-option" />
                 <label htmlFor={`ans-${index}`}>{option} - Index: {index}</label>
             </span>
         )

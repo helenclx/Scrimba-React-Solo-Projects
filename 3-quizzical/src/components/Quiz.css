@@ -31,7 +31,7 @@ input[type=radio]:hover {
     border: 0;
 }
 
-input[name="option"] {
+.quiz-option {
     -webkit-appearance: none;
     appearance: none;
     background-color: #fff;
@@ -39,7 +39,7 @@ input[name="option"] {
     position: absolute;
 }
 
-input[name="option"] + label {
+.quiz-option + label {
     border: solid 0.1rem var(--answer-border);
     background: white;
     border-radius: 0.8rem;
@@ -48,16 +48,16 @@ input[name="option"] + label {
     place-items: center;
 }
 
-input[name="option"]:checked + label {
+.quiz-option:checked + label {
     background: var(--selected-answer);
     border-color: var(--selected-answer);
 }
 
-input[name="option"]:focus-visible {
+.quiz-option:focus-visible {
     outline: 0;
 }
 
-input[name="option"]:focus-visible + label {
+.quiz-option:focus-visible + label {
     outline: 0.2rem solid var(--text-color);
 }
 
