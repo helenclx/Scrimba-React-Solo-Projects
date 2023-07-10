@@ -1,0 +1,65 @@
+.quiz-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+}
+
+label:hover,
+input[type=radio]:hover {
+    cursor: pointer;
+}
+
+.answer-field {
+    border: none;
+    padding: 0.8rem 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
+
+input[name="option"] {
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    margin: 0;
+    position: absolute;
+}
+
+input[name="option"] + label {
+    border: solid 0.1rem var(--answer-border);
+    border-radius: 0.8rem;
+    padding: 0.25rem 1rem;
+    display: grid;
+    place-items: center;
+}
+
+input[name="option"]:checked + label {
+    background: var(--selected-answer);
+    border-color: var(--selected-answer);
+}
+
+input[name="option"]:focus-visible {
+    outline: 0;
+}
+
+input[name="option"]:focus-visible + label {
+    outline: 0.2rem solid var(--text-color);
+}
+
+.check-ans-btn {
+    padding: 0.8rem 2.5rem;
+}

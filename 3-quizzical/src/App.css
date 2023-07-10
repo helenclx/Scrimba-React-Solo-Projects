@@ -1,3 +1,45 @@
+:root {
+    --text-color: #293264;
+    --btn-bg: #4D5B9E;
+    --btn-text: #F5F7FB;
+    --answer-border: #4D5B9E;
+    --selected-answer: #D6DBF5;
+    --correct-answer: #94D7A2;
+    --wrong-answer: #F8BCBC;
+}
+
+body {
+    font-family: 'Karla', Arial, Helvetica, sans-serif;
+    color: var(--text-color);
+    background-image: url(/blob-green.svg), url(/blob-yellow.svg);
+    background-position: left bottom, right top;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+#root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 90%;
+}
+
+main {
+    margin: 1rem 0;
+}
+
+button {
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+button:focus-visible {
+    outline: 0.2rem solid var(--text-color);
+}
+
 /* Screen sizes larger than mobile */
 @media only screen and (min-width: 30rem) {}
 

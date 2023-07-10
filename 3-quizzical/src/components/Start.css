@@ -1,0 +1,10 @@
+.start-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.start-btn {
+    padding: 0.8rem 3rem;
+}
