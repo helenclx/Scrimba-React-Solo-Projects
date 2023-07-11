@@ -70,10 +70,10 @@ export default function Quiz() {
                 if (optionEl.checked) {
                     console.log(`Selected answer: ${optionEl.value}`);
                     if (optionEl.value == question.correctAnswer) {
-                        console.log(`Correct answer`);
+                        console.log(`-> Correct answer.`);
                         setUserScore(prevScore => prevScore += 1);
                     } else {
-                        console.log(`Wrong answer`);
+                        console.log(`-> Wrong answer. The answer is ${decode(question.correctAnswer)}.`);
                     }
                 }
             });
