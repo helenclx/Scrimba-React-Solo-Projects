@@ -1,10 +1,8 @@
 .quiz-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     gap: 2rem;
-}
+} 
 
 label:hover,
 input[type=radio]:hover {
@@ -61,6 +59,24 @@ input[type=radio]:hover {
     outline: 0.2rem solid var(--text-color);
 }
 
+.result-section {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    gap: 1.5rem;
+}
+
 .check-ans-btn {
     padding: 0.8rem 2.5rem;
+}
+
+@media only screen and (min-width: 50rem) {
+    .quiz-container {
+        max-width: 50rem;
+    }
+
+    .result-section {
+        align-items: center;
+        flex-direction: row;
+    }
 }

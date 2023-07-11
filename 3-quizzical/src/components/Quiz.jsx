@@ -39,24 +39,25 @@ export default function Quiz() {
         )
     });
 
-    const questionEl = (
-        <div className="question-container">
-            <h2>This is a question</h2>
-            <fieldset className="answer-field">
-                <legend className="sr-only">Select one answer:</legend>
-                {optionEl}
-            </fieldset>
-        </div>
-    )
+    const questionEl = shuffledQuestions.map((option, index) => {
+        return (
+            <div className="question-wrapper" key={index}>
+                <h2>{option.question}</h2>
+                <fieldset className="answer-field">
+                    <legend className="sr-only">Select one answer:</legend>
+                    {optionEl}
+                </fieldset>
+            </div>
+        )
+    });
 
     return (
-        <div className="quiz-container">
+        <article className="quiz-container">
             {questionEl}
-            {questionEl}
-            {questionEl}
-            {questionEl}
-            {questionEl}
-            <button className="check-ans-btn">Check answers</button>
-        </div>
+            <section className="result-section">
+                {/* <h3 className="quiz-results">You scored 3/5 correct answers</h3> */}
+                <button className="check-ans-btn">Check answers</button>
+            </section>
+        </article>
     )
 }
