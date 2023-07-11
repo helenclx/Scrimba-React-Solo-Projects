@@ -42,7 +42,7 @@ export default function Quiz() {
     const questionEl = allQuestions.map((question, i) => {
         const optionEl = question.options.map((option, j) => {
             return (
-                <span key={j}>
+                <span key={j} id={`option-${i}-${j}`}>
                     <input type="radio" value={option} id={`ans-${i}-${j}`} name={`question-${i}`} className="quiz-option" />
                     <label htmlFor={`ans-${i}-${j}`}>{decode(option)}</label>
                 </span>
@@ -50,7 +50,7 @@ export default function Quiz() {
         });
 
         return (
-            <div className="question-wrapper" key={i}>
+            <div className="question-wrapper" key={i} id={`question-${i}`}>
                 <h2>{decode(question.question)}</h2>
                 <fieldset className="answer-field">
                     <legend className="sr-only">Select one answer:</legend>
