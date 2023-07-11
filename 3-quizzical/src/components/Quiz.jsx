@@ -1,13 +1,31 @@
 import React, { useState, useEffect } from "react"
 import './Quiz.css'
-import quizData from '../quizdata'
-// Refer to https://scrimba.com/learn/learnreact/project-add-text-to-image-co9dd4288bcdb0c0cfe7a2d9c
+import {nanoid} from 'nanoid'
 import {decode} from 'html-entities'
 
-export default function Quiz() {
-    const [allQuizData, setAllQuizData] = useState(quizData);
+export default function Quiz(props) {
+    const [allQuestions, setAllQuiestions] = useState([]);
     const [userScore, setUserScore] = useState(0);
     const [showScore, setShowScore] = useState(false);
+
+    useEffect(() => {
+        fetch("https://opentdb.com/api.php?amount=5&type=multiple")
+             .then(res => res.json())
+             .then(data => {
+                setAllQuiestions(getNewQuestions(data.results))
+             })
+     }, [props.quizStart]);
+
+    function getNewQuestions(questions) {
+        return questions.map(question => {
+            return ({
+                id: nanoid(),
+                question: question.question,
+                options: shuffleArray([...question.incorrect_answers, question.correct_answer]),
+                correctAnswer: question.correct_answer
+            })
+        });
+    }
 
     function shuffleArray(arr) {
         let index = arr.length;
@@ -22,14 +40,9 @@ export default function Quiz() {
         }
         return arr;
     }
-    const shuffledQuestions = shuffleArray(allQuizData.results);
-    let optionsArr = [];
 
-    const questionEl = shuffledQuestions.map((question, i) => {
-        optionsArr = [...question.incorrect_answers, question.correct_answer];
-        const shuffledOptions = shuffleArray(optionsArr);
-
-        const optionEl = shuffledOptions.map((option, j) => {
+    const questionEl = allQuestions.map((question, i) => {
+        const optionEl = question.options.map((option, j) => {
             return (
                 <span key={j}>
                     <input type="radio" value={option} id={`ans-${i}-${j}`} name={`question-${i}`} className="quiz-option" />
