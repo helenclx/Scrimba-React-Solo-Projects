@@ -56,6 +56,7 @@ export default function Quiz() {
                     <legend className="sr-only">Select one answer:</legend>
                     {optionEl}
                 </fieldset>
+                <hr />
             </div>
         );
     });

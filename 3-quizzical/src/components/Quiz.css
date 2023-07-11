@@ -1,7 +1,7 @@
 .quiz-container {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
 } 
 
 label:hover,
@@ -15,6 +15,7 @@ input[type=radio]:hover {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    margin-bottom: 1rem;
 }
 
 .sr-only {
@@ -57,6 +58,10 @@ input[type=radio]:hover {
 
 .quiz-option:focus-visible + label {
     outline: 0.2rem solid var(--text-color);
+}
+
+hr {
+    border: 0.1rem solid var(--horizontal-line);
 }
 
 .result-section {
