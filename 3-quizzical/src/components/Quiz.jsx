@@ -50,15 +50,15 @@ export default function Quiz() {
     });
 
     function checkAnswers() {
-        setShowScore(true);
+        console.log("Button clicked");
     }
 
     return (
         <article className="quiz-container">
             {questionEl}
             <section className="result-section">
-                {showScore && <h3>You scored {userScore}/{shuffledQuestions.length} correct answers</h3>}
-                <button className="check-ans-btn" onClick={checkAnswers}>Check answers</button>
+                {/* <h3>You scored {userScore}/{shuffledQuestions.length} correct answers</h3> */}
+                <button className="check-ans-btn" onClick={checkAnswers} type="button">Check answers</button>
             </section>
         </article>
     )
