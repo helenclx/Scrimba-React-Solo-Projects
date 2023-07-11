@@ -63,7 +63,21 @@ export default function Quiz() {
 
     function checkAnswers() {
         setShowScore(true);
-        console.log("Answer checked");
+        console.log("Answers checked");
+        allQuestions.forEach((question, i) => {
+            const checkOptionsEl = document.querySelectorAll(`input[name=question-${i}]`);
+            checkOptionsEl.forEach(optionEl => {
+                if (optionEl.checked) {
+                    console.log(`Selected answer: ${optionEl.value}`);
+                    if (optionEl.value == question.correctAnswer) {
+                        console.log(`Correct answer`);
+                        setUserScore(prevScore => prevScore += 1);
+                    } else {
+                        console.log(`Wrong answer`);
+                    }
+                }
+            });
+        });
     }
 
     return (
