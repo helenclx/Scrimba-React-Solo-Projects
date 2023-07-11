@@ -1,11 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
 import './Quiz.css'
 import quizData from '../quizdata'
 // Refer to https://scrimba.com/learn/learnreact/project-add-text-to-image-co9dd4288bcdb0c0cfe7a2d9c
 import {decode} from 'html-entities'
 
 export default function Quiz() {
-    const [allQuizData, setAllQuizData] = React.useState(quizData);
+    const [allQuizData, setAllQuizData] = useState(quizData);
 
     function shuffleArray(arr) {
         let index = arr.length;
