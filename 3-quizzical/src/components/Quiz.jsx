@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import './Quiz.css'
 import quizData from '../quizdata'
 // Refer to https://scrimba.com/learn/learnreact/project-add-text-to-image-co9dd4288bcdb0c0cfe7a2d9c
@@ -6,6 +6,8 @@ import {decode} from 'html-entities'
 
 export default function Quiz() {
     const [allQuizData, setAllQuizData] = useState(quizData);
+    const [userScore, setUserScore] = useState(0);
+    const [showScore, setShowScore] = useState(false);
 
     function shuffleArray(arr) {
         let index = arr.length;
@@ -47,12 +49,16 @@ export default function Quiz() {
         );
     });
 
+    function checkAnswers() {
+        setShowScore(true);
+    }
+
     return (
         <article className="quiz-container">
             {questionEl}
             <section className="result-section">
-                {/* <h3 className="quiz-results">You scored 3/5 correct answers</h3> */}
-                <button className="check-ans-btn">Check answers</button>
+                {showScore && <h3>You scored {userScore}/{shuffledQuestions.length} correct answers</h3>}
+                <button className="check-ans-btn" onClick={checkAnswers}>Check answers</button>
             </section>
         </article>
     )
