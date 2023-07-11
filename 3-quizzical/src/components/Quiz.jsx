@@ -3,7 +3,7 @@ import './Quiz.css'
 import {nanoid} from 'nanoid'
 import {decode} from 'html-entities'
 
-export default function Quiz(props) {
+export default function Quiz() {
     const [allQuestions, setAllQuiestions] = useState([]);
     const [userScore, setUserScore] = useState(0);
     const [showScore, setShowScore] = useState(false);
@@ -14,7 +14,7 @@ export default function Quiz(props) {
              .then(data => {
                 setAllQuiestions(getNewQuestions(data.results))
              })
-     }, [props.quizStart]);
+     }, []);
 
     function getNewQuestions(questions) {
         return questions.map(question => {
