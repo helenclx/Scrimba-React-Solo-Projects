@@ -20,12 +20,12 @@ export default function Quiz() {
         }
         return arr;
     }
-    let quizArr = allQuizData.results;
-    const shuffledQuestions = shuffleArray(quizArr);
+    const shuffledQuestions = shuffleArray(allQuizData.results);
+    let optionsArr = [];
 
     const questionEl = shuffledQuestions.map((question, i) => {
-        let optionArr = [...question.incorrect_answers, question.correct_answer];
-        const shuffledOptions = shuffleArray(optionArr);
+        optionsArr = [...question.incorrect_answers, question.correct_answer];
+        const shuffledOptions = shuffleArray(optionsArr);
 
         const optionEl = shuffledOptions.map((option, j) => {
             return (
