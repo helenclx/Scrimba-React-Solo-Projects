@@ -31,7 +31,7 @@ export default function Quiz() {
             return (
                 <span key={j}>
                     <input type="radio" value={option} id={`ans-${i}-${j}`} name={`question-${i}`} className="quiz-option" />
-                    <label htmlFor={`ans-${i}-${j}`}>{option}</label>
+                    <label htmlFor={`ans-${i}-${j}`}>{decode(option)}</label>
                 </span>
             )
         });
