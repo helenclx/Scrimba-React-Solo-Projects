@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react"
 import './Quiz.css'
-import {nanoid} from 'nanoid'
 import {decode} from 'html-entities'
 
 export default function Quiz() {
@@ -10,20 +9,19 @@ export default function Quiz() {
 
     useEffect(() => {
         fetch("https://opentdb.com/api.php?amount=5&type=multiple")
-             .then(res => res.json())
-             .then(data => {
+            .then(res => res.json())
+            .then(data => {
                 setAllQuiestions(getNewQuestions(data.results))
-             })
+            });
      }, []);
 
     function getNewQuestions(questions) {
         return questions.map(question => {
             return ({
-                id: nanoid(),
                 question: question.question,
                 options: shuffleArray([...question.incorrect_answers, question.correct_answer]),
                 correctAnswer: question.correct_answer
-            })
+            });
         });
     }
 
@@ -63,15 +61,16 @@ export default function Quiz() {
     });
 
     function checkAnswers() {
-        console.log("Button clicked");
+        setShowScore(true);
+        console.log("Answer checked");
     }
 
     return (
         <article className="quiz-container">
             {questionEl}
             <section className="result-section">
-                {/* <h3>You scored {userScore}/{shuffledQuestions.length} correct answers</h3> */}
-                <button className="check-ans-btn" onClick={checkAnswers} type="button">Check answers</button>
+                {showScore && <h3>You scored {userScore}/{allQuestions.length} correct answers</h3>}
+                <button className="check-ans-btn" onClick={checkAnswers}>Check answers</button>
             </section>
         </article>
     )
