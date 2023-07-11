@@ -2,17 +2,9 @@ import React from "react"
 import './Quiz.css'
 import quizData from '../quizdata'
 // Refer to https://scrimba.com/learn/learnreact/project-add-text-to-image-co9dd4288bcdb0c0cfe7a2d9c
-import { nanoid } from 'nanoid'
 
 export default function Quiz() {
     const [allQuizData, setAllQuizData] = React.useState(quizData);
-
-    let quizArr = allQuizData.results;
-    const randomQuizIndex = Math.floor(Math.random() * quizArr.length);
-    const randomQuiz = quizArr[randomQuizIndex];
-
-    let optionArr = [...randomQuiz.incorrect_answers, randomQuiz.correct_answer];
-    let optionArrTest = ["Option 1", "Option 2", "Option 3", "Option 4"];
 
     function shuffleArray(arr) {
         let index = arr.length;
@@ -27,28 +19,31 @@ export default function Quiz() {
         }
         return arr;
     }
+    let quizArr = allQuizData.results;
     const shuffledQuestions = shuffleArray(quizArr);
-    const shuffledOptions = shuffleArray(optionArr);
 
-    const optionEl = shuffledOptions.map((option, index) => {
-        return (
-            <span key={index}>
-                <input type="radio" value={option} id={`ans-${index}`} name="option" className="quiz-option" />
-                <label htmlFor={`ans-${index}`}>{option} - Index: {index}</label>
-            </span>
-        )
-    });
+    const questionEl = shuffledQuestions.map((question, i) => {
+        let optionArr = [...question.incorrect_answers, question.correct_answer];
+        const shuffledOptions = shuffleArray(optionArr);
 
-    const questionEl = shuffledQuestions.map((option, index) => {
+        const optionEl = shuffledOptions.map((option, j) => {
+            return (
+                <span key={j}>
+                    <input type="radio" value={option} id={`ans-${i}-${j}`} name={`question-${i}`} className="quiz-option" />
+                    <label htmlFor={`ans-${i}-${j}`}>{option}</label>
+                </span>
+            )
+        });
+
         return (
-            <div className="question-wrapper" key={index}>
-                <h2>{option.question}</h2>
+            <div className="question-wrapper" key={i}>
+                <h2>{question.question}</h2>
                 <fieldset className="answer-field">
                     <legend className="sr-only">Select one answer:</legend>
                     {optionEl}
                 </fieldset>
             </div>
-        )
+        );
     });
 
     return (
