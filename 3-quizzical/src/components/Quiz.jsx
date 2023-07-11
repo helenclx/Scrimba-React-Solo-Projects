@@ -28,12 +28,12 @@ export default function Quiz() {
         return arr;
     }
     const shuffledQuestions = shuffleArray(quizArr);
-    const shuffledOptions = shuffleArray(optionArrTest);
+    const shuffledOptions = shuffleArray(optionArr);
 
     const optionEl = shuffledOptions.map((option, index) => {
         return (
             <span key={index}>
-                <input type="radio" id={`ans-${index}`} name="option" className="quiz-option" />
+                <input type="radio" value={option} id={`ans-${index}`} name="option" className="quiz-option" />
                 <label htmlFor={`ans-${index}`}>{option} - Index: {index}</label>
             </span>
         )
