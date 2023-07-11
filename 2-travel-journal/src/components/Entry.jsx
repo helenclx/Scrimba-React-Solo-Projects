@@ -4,9 +4,9 @@ export default function Entries(props) {
     return (
         <article className="entry">
             <img
-                    className="entry__image"
-                    src={`/images/${props.imageURL}`}
-                    alt={`Photo of ${props.title}`}
+                className="entry__image"
+                src={`/images/${props.imageURL}`}
+                alt={`Photo of ${props.title}`}
             />
 
             <section className="entry__box">
