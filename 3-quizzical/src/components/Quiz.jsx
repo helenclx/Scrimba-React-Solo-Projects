@@ -68,7 +68,7 @@ export default function Quiz() {
             const checkOptionsEl = document.querySelectorAll(`input[name=question-${i}]`);
             checkOptionsEl.forEach(optionEl => {
                 if (optionEl.checked) {
-                    console.log(`Selected answer: ${optionEl.value}`);
+                    console.log(`Selected answer: ${decode(optionEl.value)}`);
                     if (optionEl.value == question.correctAnswer) {
                         console.log(`-> Correct answer.`);
                         setUserScore(prevScore => prevScore += 1);
