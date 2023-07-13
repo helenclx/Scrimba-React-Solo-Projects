@@ -6,7 +6,7 @@ import {nanoid} from 'nanoid'
 export default function Quiz() {
     const [allQuestions, setAllQuiestions] = useState([]);
     const [userScore, setUserScore] = useState(0);
-    const [showScore, setShowScore] = useState(false);
+    const [answersChecked, setAnswersChecked] = useState(false);
 
     useEffect(() => {
         fetch("https://opentdb.com/api.php?amount=5&type=multiple")
@@ -89,7 +89,7 @@ export default function Quiz() {
     });
 
     function checkAnswers() {
-        setShowScore(true);
+        setAnswersChecked(true);
         console.log("Answers checked");
         /* allQuestions.forEach((question, i) => {
             const checkOptionsEl = document.querySelectorAll(`input[name=question-${i}]`);
@@ -119,7 +119,7 @@ export default function Quiz() {
         <article className="quiz-container">
             {questionEl}
             <section className="result-section">
-                {showScore && <h3>You scored {userScore}/{allQuestions.length} correct answers</h3>}
+                {answersChecked && <h3>You scored {userScore}/{allQuestions.length} correct answers</h3>}
                 <button className="check-ans-btn" onClick={checkAnswers}>Check answers</button>
             </section>
         </article>
