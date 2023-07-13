@@ -6,13 +6,9 @@ import Quiz from './components/Quiz'
 function App() {
     const [quizStart, setQuizStart] = useState(false);
 
-    function startQuiz() {
-        setQuizStart(true);
-    }
-
     return (
         <main>
-            {quizStart ? <Quiz /> : <Start onClick={startQuiz} />}
+            {quizStart ? <Quiz /> : <Start setQuizStart={setQuizStart} />}
         </main>
     )
 }
