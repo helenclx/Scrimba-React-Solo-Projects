@@ -51,11 +51,11 @@ export default function Quiz() {
         return arr;
     }
 
-    function handleOptionChange(questionId, selectedAnswerId) {
+    function handleOptionChange(event, questionId, selectedAnswerId) {
         setAllQuiestions(prevQuestions => {
             return prevQuestions.map(question => {
                 if (question.id === questionId) {
-                    console.log(`Selected answer id: ${selectedAnswerId}`);
+                    console.log(`Selected answer: ${event.target.value}, id: ${selectedAnswerId}`);
                     return {...question,
                         selectedAnswerId,
                     }
@@ -70,7 +70,7 @@ export default function Quiz() {
         const optionEl = question.options.map((option) => {
             return (
                 <label key={option.id} htmlFor={option.id} className="quiz-option">
-                    <input type="radio" value={option.answer} id={option.id} name={`question-${i}`} onChange={() => handleOptionChange(question.id, option.id)} />
+                    <input type="radio" value={option.answer} id={option.id} name={`question-${i}`} onChange={() => handleOptionChange(event, question.id, option.id)} />
                     {option.answer}
                 </label>
             )
