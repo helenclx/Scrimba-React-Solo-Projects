@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import './Quiz.css'
 import {decode} from 'html-entities'
+import classNames from 'classnames'
 
 export default function Quiz() {
     const [allQuestions, setAllQuiestions] = useState([]);
