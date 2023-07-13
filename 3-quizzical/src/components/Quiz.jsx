@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react"
 import './Quiz.css'
 import {decode} from 'html-entities'
 import {nanoid} from 'nanoid'
+import classNames from 'classnames'
 
 export default function Quiz() {
     const [allQuestions, setAllQuiestions] = useState([]);
@@ -67,10 +68,25 @@ export default function Quiz() {
     }
 
     const questionEl = allQuestions.map((question, i) => {
+        const {selectedAnswerId, correctAnswer} = question;
         const optionEl = question.options.map((option) => {
             return (
-                <label key={option.id} htmlFor={option.id} className="quiz-option">
-                    <input type="radio" value={option.answer} id={option.id} name={`question-${i}`} onChange={() => handleOptionChange(event, question.id, option.id)} />
+                <label key={option.id} htmlFor={option.id} className={
+                    classNames(
+                        "quiz-option",
+                        {"quiz-option__selected": !answersChecked && option.id === selectedAnswerId},
+                        {"quiz-option__correct": answersChecked && option.id === correctAnswer.id},
+                        {"quiz-option__wrong": answersChecked && option.id !== correctAnswer.id},
+                        {"quiz-option__unselected": answersChecked && option.id !== correctAnswer.id && option.id !== selectedAnswerId}
+                    )
+                }>
+                    <input
+                        type="radio"
+                        value={option.answer}
+                        id={option.id}
+                        name={`question-${i}`}
+                        onChange={() => handleOptionChange(event, question.id, option.id)}
+                    />
                     {option.answer}
                 </label>
             )
@@ -91,20 +107,6 @@ export default function Quiz() {
     function checkAnswers() {
         setAnswersChecked(true);
         console.log("Answers checked");
-        /* allQuestions.forEach((question, i) => {
-            const checkOptionsEl = document.querySelectorAll(`input[name=question-${i}]`);
-            checkOptionsEl.forEach(optionEl => {
-                if (optionEl.checked) {
-                    console.log(`Selected answer: ${optionEl.value}`);
-                    if (optionEl.value == question.correctAnswer.answer) {
-                        console.log(`-> Correct answer.`);
-                        setUserScore(prevScore => prevScore += 1);
-                    } else {
-                        console.log(`-> Wrong answer. The answer is ${question.correctAnswer.answer}.`);
-                    }
-                }
-            });
-        }); */
         allQuestions.forEach((question, i) => {
             if (question.selectedAnswerId === question.correctAnswer.id) {
                 console.log(`Question ${i}: Correct answer.`);

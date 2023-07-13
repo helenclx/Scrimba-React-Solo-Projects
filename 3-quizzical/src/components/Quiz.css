@@ -30,13 +30,13 @@ input[type=radio]:hover {
     border: 0;
 }
 
-/* input[type=radio] {
+input[type=radio] {
     -webkit-appearance: none;
     appearance: none;
     background-color: #fff;
     margin: 0;
     position: absolute;
-} */
+}
 
 .quiz-option {
     border: solid 0.1rem var(--answer-border);
@@ -47,13 +47,29 @@ input[type=radio]:hover {
     place-items: center;
 }
 
-.quiz-option:checked {
+.quiz-option__selected {
     background: var(--selected-answer);
     border-color: var(--selected-answer);
 }
 
+.quiz-option__correct {
+    background: var(--correct-answer);
+    border-color: var(--correct-answer);
+}
+
+.quiz-option__wrong {
+    background: var(--wrong-answer);
+    border-color: var(--wrong-answer);
+}
+
+.quiz-option__unselected {
+    background: white;
+    border-color: var(--answer-border);
+    opacity: 0.5;
+}
+
 .quiz-option:focus {
-    outline: 0;
+    outline: 0.2rem solid var(--text-color);
 }
 
 .quiz-option:focus-visible + label {
