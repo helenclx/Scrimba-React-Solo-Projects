@@ -68,11 +68,11 @@ input[type=radio] {
     opacity: 0.5;
 }
 
-.quiz-option:focus {
-    outline: 0.2rem solid var(--text-color);
+.quiz-option input:focus {
+    outline: none;
 }
 
-.quiz-option:focus-visible + label {
+.quiz-option:focus-within {
     outline: 0.2rem solid var(--text-color);
 }
 
