@@ -30,15 +30,15 @@ input[type=radio]:hover {
     border: 0;
 }
 
-input[type=radio] {
+/* input[type=radio] {
     -webkit-appearance: none;
     appearance: none;
     background-color: #fff;
     margin: 0;
     position: absolute;
-}
+} */
 
-.quiz-option + label {
+.quiz-option {
     border: solid 0.1rem var(--answer-border);
     background: white;
     border-radius: 0.8rem;
@@ -47,12 +47,12 @@ input[type=radio] {
     place-items: center;
 }
 
-.quiz-option:checked + label {
+.quiz-option:checked {
     background: var(--selected-answer);
     border-color: var(--selected-answer);
 }
 
-.quiz-option:focus-visible {
+.quiz-option:focus {
     outline: 0;
 }
 

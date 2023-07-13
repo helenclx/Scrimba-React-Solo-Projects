@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react"
 import './Quiz.css'
 import {decode} from 'html-entities'
+import {nanoid} from 'nanoid'
 
 export default function Quiz() {
     const [allQuestions, setAllQuiestions] = useState([]);
     const [userScore, setUserScore] = useState(0);
     const [showScore, setShowScore] = useState(false);
-    const [selectedAnswer, setSelectedAnswer] = useState(null);
 
     useEffect(() => {
         fetch("https://opentdb.com/api.php?amount=5&type=multiple")
@@ -18,10 +18,21 @@ export default function Quiz() {
 
     function getNewQuestions(questions) {
         return questions.map(question => {
+            const correctAnswer = {
+                id: nanoid(),
+                answer: decode(question.correct_answer)
+            };
+            const incorrectAnswers = question.incorrect_answers.map(answer => ({
+                id: nanoid(),
+                answer: decode(answer)
+            }));
+
             return ({
-                question: question.question,
-                options: shuffleArray([...question.incorrect_answers, question.correct_answer]),
-                correctAnswer: question.correct_answer
+                id: nanoid(),
+                question: decode(question.question),
+                options: shuffleArray([...incorrectAnswers, correctAnswer]),
+                correctAnswer: correctAnswer,
+                selectedAnswer: null
             });
         });
     }
@@ -40,25 +51,34 @@ export default function Quiz() {
         return arr;
     }
 
-    function handleOptionChange(event) {
-        const decodedAnswer = decode(event.target.value);
-        setSelectedAnswer(decodedAnswer);
-        console.log(`Selected answer: ${decodedAnswer}`);
+    function handleOptionChange(questionId, selectedAnswerId) {
+        setAllQuiestions(prevQuestions => {
+            return prevQuestions.map(question => {
+                if (question.id === questionId) {
+                    console.log(`Selected answer id: ${selectedAnswerId}`);
+                    return {...question,
+                        selectedAnswerId,
+                    }
+                } else {
+                    return question;
+                };
+            });
+        })
     }
 
     const questionEl = allQuestions.map((question, i) => {
-        const optionEl = question.options.map((option, j) => {
+        const optionEl = question.options.map((option) => {
             return (
-                <span key={j} id={`option-${i}-${j}`}>
-                    <input type="radio" value={option} id={`ans-${i}-${j}`} name={`question-${i}`} className="quiz-option" onChange={handleOptionChange} />
-                    <label htmlFor={`ans-${i}-${j}`}>{decode(option)}</label>
-                </span>
+                <label key={option.id} htmlFor={option.id} className="quiz-option">
+                    <input type="radio" value={option.answer} id={option.id} name={`question-${i}`} onChange={() => handleOptionChange(question.id, option.id)} />
+                    {option.answer}
+                </label>
             )
         });
 
         return (
-            <div className="question-wrapper" key={i} id={`question-${i}`}>
-                <h2>{decode(question.question)}</h2>
+            <div className="question-wrapper" key={question.id} id={question.id}>
+                <h2>{question.question}</h2>
                 <fieldset className="answer-field">
                     <legend className="sr-only">Select one answer:</legend>
                     {optionEl}
@@ -75,12 +95,12 @@ export default function Quiz() {
             const checkOptionsEl = document.querySelectorAll(`input[name=question-${i}]`);
             checkOptionsEl.forEach(optionEl => {
                 if (optionEl.checked) {
-                    console.log(`Selected answer: ${decode(optionEl.value)}`);
-                    if (optionEl.value == question.correctAnswer) {
+                    console.log(`Selected answer: ${optionEl.value}`);
+                    if (optionEl.value == question.correctAnswer.answer) {
                         console.log(`-> Correct answer.`);
                         setUserScore(prevScore => prevScore += 1);
                     } else {
-                        console.log(`-> Wrong answer. The answer is ${decode(question.correctAnswer)}.`);
+                        console.log(`-> Wrong answer. The answer is ${question.correctAnswer.answer}.`);
                     }
                 }
             });
