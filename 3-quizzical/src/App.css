@@ -40,12 +40,3 @@ button {
 button:focus-visible {
     outline: 0.2rem solid var(--text-color);
 }
-
-/* Screen sizes larger than mobile */
-@media only screen and (min-width: 30rem) {}
-
-/* Tablet screen size */
-@media only screen and (min-width: 43.75rem) {}
-
-/* Desktop screen size */
-@media only screen and (min-width: 60rem) {}
