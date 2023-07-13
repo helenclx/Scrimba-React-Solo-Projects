@@ -7,6 +7,7 @@ export default function Quiz() {
     const [allQuestions, setAllQuiestions] = useState([]);
     const [userScore, setUserScore] = useState(0);
     const [showScore, setShowScore] = useState(false);
+    const [selectedAnswer, setSelectedAnswer] = useState(null);
 
     useEffect(() => {
         fetch("https://opentdb.com/api.php?amount=5&type=multiple")
@@ -40,11 +41,17 @@ export default function Quiz() {
         return arr;
     }
 
+    function handleOptionChange(event) {
+        const decodedAnswer = decode(event.target.value);
+        setSelectedAnswer(decodedAnswer);
+        console.log(`Selected answer: ${decodedAnswer}`);
+    }
+
     const questionEl = allQuestions.map((question, i) => {
         const optionEl = question.options.map((option, j) => {
             return (
                 <span key={j} id={`option-${i}-${j}`}>
-                    <input type="radio" value={option} id={`ans-${i}-${j}`} name={`question-${i}`} className="quiz-option" />
+                    <input type="radio" value={option} id={`ans-${i}-${j}`} name={`question-${i}`} className="quiz-option" onChange={handleOptionChange} />
                     <label htmlFor={`ans-${i}-${j}`}>{decode(option)}</label>
                 </span>
             )

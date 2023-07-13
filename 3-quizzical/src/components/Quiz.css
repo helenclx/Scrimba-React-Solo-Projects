@@ -30,7 +30,7 @@ input[type=radio]:hover {
     border: 0;
 }
 
-.quiz-option {
+input[type=radio] {
     -webkit-appearance: none;
     appearance: none;
     background-color: #fff;
