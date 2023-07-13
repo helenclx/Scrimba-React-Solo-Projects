@@ -5,7 +5,7 @@ import {nanoid} from 'nanoid'
 import classNames from 'classnames'
 
 export default function Quiz() {
-    const [allQuestions, setAllQuiestions] = useState([]);
+    const [allQuestions, setAllQuestions] = useState([]);
     const [userScore, setUserScore] = useState(0);
     const [answersChecked, setAnswersChecked] = useState(false);
 
@@ -13,7 +13,7 @@ export default function Quiz() {
         fetch("https://opentdb.com/api.php?amount=5&type=multiple")
             .then(res => res.json())
             .then(data => {
-                setAllQuiestions(getNewQuestions(data.results))
+                setAllQuestions(getNewQuestions(data.results))
             });
      }, []);
 
@@ -53,7 +53,7 @@ export default function Quiz() {
     }
 
     function handleOptionChange(event, questionId, selectedAnswerId) {
-        setAllQuiestions(prevQuestions => {
+        setAllQuestions(prevQuestions => {
             return prevQuestions.map(question => {
                 if (question.id === questionId) {
                     console.log(`Selected answer: ${event.target.value}, id: ${selectedAnswerId}`);
