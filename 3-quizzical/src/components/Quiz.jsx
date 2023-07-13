@@ -19,9 +19,9 @@ export default function Quiz() {
     function getNewQuestions(questions) {
         return questions.map(question => {
             return ({
-                question: question.question,
-                options: shuffleArray([...question.incorrect_answers, question.correct_answer]),
-                correctAnswer: question.correct_answer
+                question: decode(question.question),
+                options: shuffleArray(decode([...question.incorrect_answers, question.correct_answer])),
+                correctAnswer: decode(question.correct_answer)
             });
         });
     }
@@ -45,14 +45,14 @@ export default function Quiz() {
             return (
                 <span key={j} id={`option-${i}-${j}`}>
                     <input type="radio" value={option} id={`ans-${i}-${j}`} name={`question-${i}`} className="quiz-option" />
-                    <label htmlFor={`ans-${i}-${j}`}>{decode(option)}</label>
+                    <label htmlFor={`ans-${i}-${j}`}>{option}</label>
                 </span>
             )
         });
 
         return (
             <div className="question-wrapper" key={i} id={`question-${i}`}>
-                <h2>{decode(question.question)}</h2>
+                <h2>{question.question}</h2>
                 <fieldset className="answer-field">
                     <legend className="sr-only">Select one answer:</legend>
                     {optionEl}
@@ -69,12 +69,12 @@ export default function Quiz() {
             const checkOptionsEl = document.querySelectorAll(`input[name=question-${i}]`);
             checkOptionsEl.forEach(optionEl => {
                 if (optionEl.checked) {
-                    console.log(`Selected answer: ${decode(optionEl.value)}`);
+                    console.log(`Selected answer: ${optionEl.value}`);
                     if (optionEl.value == question.correctAnswer) {
                         console.log(`-> Correct answer.`);
                         setUserScore(prevScore => prevScore += 1);
                     } else {
-                        console.log(`-> Wrong answer. The answer is ${decode(question.correctAnswer)}.`);
+                        console.log(`-> Wrong answer. The answer is ${question.correctAnswer}.`);
                     }
                 }
             });
