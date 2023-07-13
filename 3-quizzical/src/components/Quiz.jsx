@@ -32,7 +32,7 @@ export default function Quiz() {
                 question: decode(question.question),
                 options: shuffleArray([...incorrectAnswers, correctAnswer]),
                 correctAnswer: correctAnswer,
-                selectedAnswer: null
+                selectedAnswerId: null
             });
         });
     }
@@ -57,7 +57,7 @@ export default function Quiz() {
                 if (question.id === questionId) {
                     console.log(`Selected answer: ${event.target.value}, id: ${selectedAnswerId}`);
                     return {...question,
-                        selectedAnswerId,
+                        selectedAnswerId: selectedAnswerId
                     }
                 } else {
                     return question;
@@ -91,7 +91,7 @@ export default function Quiz() {
     function checkAnswers() {
         setShowScore(true);
         console.log("Answers checked");
-        allQuestions.forEach((question, i) => {
+        /* allQuestions.forEach((question, i) => {
             const checkOptionsEl = document.querySelectorAll(`input[name=question-${i}]`);
             checkOptionsEl.forEach(optionEl => {
                 if (optionEl.checked) {
@@ -104,6 +104,14 @@ export default function Quiz() {
                     }
                 }
             });
+        }); */
+        allQuestions.forEach((question, i) => {
+            if (question.selectedAnswerId === question.correctAnswer.id) {
+                console.log(`Question ${i}: Correct answer.`);
+                setUserScore(prevScore => prevScore += 1);
+            } else {
+                console.log(`Question ${i}: Wrong answer. The answer is ${question.correctAnswer.answer}.`);
+            };
         });
     }
 
