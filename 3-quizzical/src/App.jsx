@@ -17,7 +17,8 @@ function App() {
             .then(res => res.json())
             .then(data => {
                 setAllQuestions(getNewQuestions(data.results))
-            });
+            })
+            .catch(error => console.log(error));
      }, [resetQuiz]);
 
     function getNewQuestions(questions) {
