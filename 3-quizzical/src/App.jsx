@@ -44,12 +44,9 @@ function App() {
     function shuffleArray(arr) {
         let index = arr.length;
         let randomIndex;
-        // While there remain elements to shuffle.
         while (index != 0) {
-            // Pick a remaining element.
             randomIndex = Math.floor(Math.random() * index);
             index--;
-            // And swap it with the current element.
             [arr[index], arr[randomIndex]] = [arr[randomIndex], arr[index]];
         }
         return arr;
