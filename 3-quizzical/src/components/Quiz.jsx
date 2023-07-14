@@ -37,6 +37,7 @@ export default function Quiz(props) {
                         id={option.id}
                         name={`question-${i}`}
                         onChange={() => handleOptionChange(event, question.id, option.id)}
+                        disabled={props.answersChecked}
                     />
                     {option.answer}
                 </label>
