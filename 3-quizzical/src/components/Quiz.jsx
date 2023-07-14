@@ -47,7 +47,7 @@ export default function Quiz(props) {
         return (
             <div className="question-wrapper" key={question.id} id={question.id}>
                 <h2>{question.question}</h2>
-                <fieldset className="answer-field">
+                <fieldset className="answer-field" aria-label="Answer options">
                     <legend className="sr-only">Select one answer:</legend>
                     {optionEl}
                 </fieldset>
@@ -71,7 +71,8 @@ export default function Quiz(props) {
     }
 
     return (
-        <article className="quiz-container">
+        <article className="quiz-container" aria-live="polite">
+            <h1 className="sr-only">Quizzical questions</h1>
             {questionEl}
             <section className="result-section">
                 {
