@@ -67,6 +67,7 @@ export default function Quiz(props) {
                 console.log(`Question ${i}: Wrong answer. The answer is ${question.correctAnswer.answer}.`);
             };
         });
+        console.log(`User score is ${props.userScore} out of ${props.allQuestions.length}`);
     }
 
     return (
