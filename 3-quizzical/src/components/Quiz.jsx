@@ -76,9 +76,16 @@ export default function Quiz(props) {
                     props.answersChecked &&
                     <h3>You scored {props.userScore}/{props.allQuestions.length} correct answers</h3>
                 }
-                <button className="check-ans-btn" onClick={() => checkAnswers()}>
-                    Check answers
-                </button>
+                {
+                    props.answersChecked ?
+                    <button className="check-ans-btn" onClick={() => props.restartQuiz()}>
+                        Play again
+                    </button>
+                    : <button className="check-ans-btn" onClick={() => checkAnswers()}>
+                        Check answers
+                    </button>
+                }
+                
             </section>
         </article>
     )

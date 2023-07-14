@@ -10,6 +10,7 @@ function App() {
     const [allQuestions, setAllQuestions] = useState([]);
     const [userScore, setUserScore] = useState(0);
     const [answersChecked, setAnswersChecked] = useState(false);
+    const [resetQuiz, setResetQuiz] = useState(0);
 
     useEffect(() => {
         fetch("https://opentdb.com/api.php?amount=5&type=multiple")
@@ -17,7 +18,7 @@ function App() {
             .then(data => {
                 setAllQuestions(getNewQuestions(data.results))
             });
-     }, []);
+     }, [resetQuiz]);
 
     function getNewQuestions(questions) {
         return questions.map(question => {
@@ -54,6 +55,12 @@ function App() {
         return arr;
     }
 
+    function restartQuiz() {
+        setAnswersChecked(false);
+        setUserScore(0);
+        setResetQuiz(prevCount => prevCount += 1);
+    }
+
     return (
         <main>
             {quizStart ?
@@ -64,6 +71,7 @@ function App() {
                     setAnswersChecked={setAnswersChecked}
                     userScore={userScore}
                     setUserScore={setUserScore}
+                    restartQuiz={restartQuiz}
                 />
                 : <Start setQuizStart={setQuizStart} />
             }
