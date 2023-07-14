@@ -20,3 +20,12 @@ All these projects are built with Vite + React.
 
 - [Live site](https://travel-journal-2200c5.netlify.app/)
 - [Source code](https://github.com/helenclx/Scrimba-React-Solo-Projects/tree/main/2-travel-journal)
+
+## Quizzical
+
+![](./3-quizzical/screenshot-start.png)
+![](./3-quizzical/screenshot-questions.png)
+![](./3-quizzical/screenshot-answers.png)
+
+- [Live site](https://helenclx-quizzical.netlify.app/)
+- [Source code](https://github.com/helenclx/Scrimba-React-Solo-Projects/tree/main/3-quizzical)
