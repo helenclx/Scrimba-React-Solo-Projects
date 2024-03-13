@@ -73,7 +73,7 @@ export default function Quiz(props) {
     return (
         <article className="quiz-container" aria-live="polite">
             <h1 className="sr-only">Quizzical questions</h1>
-            {questionEl}
+            <section className="quiz-section">{questionEl}</section>
             <section className="result-section">
                 {
                     props.answersChecked &&
@@ -88,7 +88,7 @@ export default function Quiz(props) {
                         Check answers
                     </button>
                 }
-                
+
             </section>
         </article>
     )
