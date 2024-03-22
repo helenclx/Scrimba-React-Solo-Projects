@@ -16,9 +16,12 @@ function App() {
         fetch("https://opentdb.com/api.php?amount=5&type=multiple")
             .then(res => res.json())
             .then(data => {
-                setAllQuestions(getNewQuestions(data.results))
+                setAllQuestions(getNewQuestions(data.results));
             })
-            .catch(error => console.log(error));
+            .catch(error => {
+                // console.log("Error:", error);
+                alert(`There was an error in loading the quiz\n\nError:\n${error}`);
+            });
      }, [resetQuiz]);
 
     function getNewQuestions(questions) {
