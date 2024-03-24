@@ -19,7 +19,6 @@ function App() {
                 setAllQuestions(getNewQuestions(data.results));
             })
             .catch(error => {
-                // console.log("Error:", error);
                 alert(`There was an error in loading the quiz\n\nError:\n${error}`);
             });
      }, [resetQuiz]);

@@ -7,7 +7,6 @@ export default function Quiz(props) {
         props.setAllQuestions(prevQuestions => {
             return prevQuestions.map(question => {
                 if (question.id === questionId) {
-                    console.log(`Selected answer: ${event.target.value}, id: ${selectedAnswerId}`);
                     return {...question,
                         selectedAnswerId: selectedAnswerId
                     }
@@ -58,16 +57,12 @@ export default function Quiz(props) {
 
     function checkAnswers() {
         props.setAnswersChecked(true);
-        console.log("Answers checked");
         props.allQuestions.forEach((question, i) => {
             if (question.selectedAnswerId === question.correctAnswer.id) {
-                console.log(`Question ${i}: Correct answer.`);
                 props.setUserScore(prevScore => prevScore += 1);
             } else {
-                console.log(`Question ${i}: Wrong answer. The answer is ${question.correctAnswer.answer}.`);
             };
         });
-        console.log(`User score is ${props.userScore} out of ${props.allQuestions.length}`);
     }
 
     return (
