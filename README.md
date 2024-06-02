@@ -1,5 +1,5 @@
 # Scrimba React Solo Projects
- My solutions to the solo projects of Scrimba's React course.
+My solutions to the solo projects of Scrimba's React course.
 
 Scrimba's React course links:
 - [Scrimba's scrims](https://scrimba.com/learn/learnreact)
