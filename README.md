@@ -11,14 +11,14 @@ All these projects are built with Vite + React.
 
 ![](./1-digital-business-card/screenshot.png)
 
-- [Live site](https://digital-business-card-8e5538.netlify.app/)
+- [Live site](https://helenchong.dev/Scrimba-React-Solo-Projects/1-digital-business-card/)
 - [Source code](https://github.com/helenclx/Scrimba-React-Solo-Projects/tree/main/1-digital-business-card)
 
 ## Travel Journal
 
 ![](./2-travel-journal/screenshot.png)
 
-- [Live site](https://travel-journal-2200c5.netlify.app/)
+- [Live site](https://helenchong.dev/Scrimba-React-Solo-Projects/2-travel-journal/)
 - [Source code](https://github.com/helenclx/Scrimba-React-Solo-Projects/tree/main/2-travel-journal)
 
 ## Quizzical
@@ -27,5 +27,5 @@ All these projects are built with Vite + React.
 ![](./3-quizzical/screenshot-questions.png)
 ![](./3-quizzical/screenshot-answers.png)
 
-- [Live site](https://helenclx-quizzical.netlify.app/)
+- [Live site](https://helenchong.dev/Scrimba-React-Solo-Projects/3-quizzical/)
 - [Source code](https://github.com/helenclx/Scrimba-React-Solo-Projects/tree/main/3-quizzical)
