@@ -30,6 +30,7 @@ jobs:
       # index page
       - name: Deploy index page
         run: |
+          mkdir -p deploy
           cp -r index.html style.css deploy/
 
       # digital-business-card project
