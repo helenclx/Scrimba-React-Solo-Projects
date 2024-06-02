@@ -1,3 +1,5 @@
+# Tutorial: https://dev.to/devloker/deploy-a-react-projects-that-are-inside-a-subdirectories-to-github-pages-using-github-actions-cicd-3n9l
+
 name: Deploy to GitHub Pages
 
 on:
