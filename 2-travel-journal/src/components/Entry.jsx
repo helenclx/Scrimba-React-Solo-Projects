@@ -5,7 +5,7 @@ export default function Entries(props) {
         <article className="entry">
             <img
                 className="entry__image"
-                src={`/images/${props.imageURL}`}
+                src={`./images/${props.imageURL}`}
                 alt={`Photo of ${props.title}`}
             />
 
