@@ -1,0 +1,63 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: latest
+
+      # digital-business-card project
+      - name: Build digital-business-card
+        run: |
+          cd 1-digital-business-card
+          npm install && npm run build
+          cd ..
+          mkdir -p deploy/1-digital-business-card
+          cp -r 1-digital-business-card/build/* deploy/1-digital-business-card/
+
+      # travel-journal project
+      - name: Build travel-journal
+        run: |
+          cd 2-travel-journal
+          npm install && npm run build
+          cd ..
+          mkdir -p deploy/2-travel-journal
+          cp -r 2-travel-journal/build/* deploy/2-travel-journal/
+
+      # quizzical project
+      - name: Build quizzical
+        run: |
+          cd 3-quizzical
+          npm install && npm run build
+          cd ..
+          mkdir -p deploy/3-quizzical
+          cp -r 3-quizzical/build/* deploy/3-quizzical/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "./deploy"
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
