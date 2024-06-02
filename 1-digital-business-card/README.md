@@ -12,7 +12,7 @@ This is one of the Solo projects for Scrimba's React course.
 
 Digital Business Card solo project instruction links:
 - [Scrimba scrim](https://v2.scrimba.com/learn-react-c0e/~010)
-- [freeCodeCamp's YouTube channel](https://www.youtube.com/watch?v=bMknfKXIFA8&t=8543s)
+- [freeCodeCamp's YouTube channel](https://www.youtube.com/watch?v=bMknfKXIFA8&t=8450s)
 
 ## Running the Project Locally
 
