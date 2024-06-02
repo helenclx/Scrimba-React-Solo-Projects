@@ -27,6 +27,11 @@ jobs:
         with:
           node-version: latest
 
+      # index page
+      - name: Deploy index page
+        run: |
+          cp -r index.html style.css deploy/
+
       # digital-business-card project
       - name: Build digital-business-card
         run: |
