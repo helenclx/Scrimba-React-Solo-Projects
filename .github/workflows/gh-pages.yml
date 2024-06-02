@@ -27,12 +27,6 @@ jobs:
         with:
           node-version: latest
 
-      # index page
-      - name: Deploy index page
-        run: |
-          mkdir -p deploy
-          cp -r index.html style.css 1-digital-business-card/screenshot.png 2-travel-journal/screenshot.png 3-quizzical/screenshot-start.png 3-quizzical/screenshot-questions.png 3-quizzical/screenshot-answers.png deploy/
-
       # digital-business-card project
       - name: Build digital-business-card
         run: |
@@ -59,6 +53,15 @@ jobs:
           cd ..
           mkdir -p deploy/3-quizzical
           cp -r 3-quizzical/dist/* deploy/3-quizzical/
+
+      # index page and assets
+      - name: Deploy index page and assets
+        run: |
+          mkdir -p deploy
+          cp -r index.html style.css deploy/
+          cp -r 1-digital-business-card/screenshot.png deploy/1-digital-business-card/
+          cp -r 2-travel-journal/screenshot.png deploy/2-travel-journal/
+          cp -r 3-quizzical/screenshot-start.png 3-quizzical/screenshot-questions.png 3-quizzical/screenshot-answers.png deploy/3-quizzical/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
