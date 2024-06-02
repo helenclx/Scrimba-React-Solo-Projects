@@ -32,7 +32,7 @@ jobs:
           npm install && npm run build
           cd ..
           mkdir -p deploy/1-digital-business-card
-          cp -r 1-digital-business-card/build/* deploy/1-digital-business-card/
+          cp -r 1-digital-business-card/dist/* deploy/1-digital-business-card/
 
       # travel-journal project
       - name: Build travel-journal
@@ -41,7 +41,7 @@ jobs:
           npm install && npm run build
           cd ..
           mkdir -p deploy/2-travel-journal
-          cp -r 2-travel-journal/build/* deploy/2-travel-journal/
+          cp -r 2-travel-journal/dist/* deploy/2-travel-journal/
 
       # quizzical project
       - name: Build quizzical
@@ -50,7 +50,7 @@ jobs:
           npm install && npm run build
           cd ..
           mkdir -p deploy/3-quizzical
-          cp -r 3-quizzical/build/* deploy/3-quizzical/
+          cp -r 3-quizzical/dist/* deploy/3-quizzical/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
