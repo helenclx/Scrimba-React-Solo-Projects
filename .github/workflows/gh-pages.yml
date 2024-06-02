@@ -31,7 +31,7 @@ jobs:
       - name: Deploy index page
         run: |
           mkdir -p deploy
-          cp -r index.html style.css deploy/
+          cp -r index.html style.css 1-digital-business-card/screenshot.png 2-travel-journal/screenshot.png 3-quizzical/screenshot-start.png 3-quizzical/screenshot-questions.png 3-quizzical/screenshot-answers.png deploy/
 
       # digital-business-card project
       - name: Build digital-business-card
