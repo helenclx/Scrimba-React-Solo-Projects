@@ -3,7 +3,7 @@
 
  Scrimba's React course links:
  - [Scrimba's scrims](https://scrimba.com/learn/learnreact)
- - [freeCodeCamp's YouTube channel](https://youtu.be/bMknfKXIFA8)
+ - [freeCodeCamp's YouTube channel](https://www.youtube.com/watch?v=bMknfKXIFA8)
 
 All these projects are built with Vite + React.
 
