@@ -9,23 +9,23 @@ All these projects are built with Vite + React, and deployed to GitHub Pages bas
 
 ## Digital Business Card
 
-![](./1-digital-business-card/screenshot.png)
+![Screenshot of the digital businees card solo project](./1-digital-business-card/screenshot.png)
 
 - [Live site](https://helenchong.dev/Scrimba-React-Solo-Projects/1-digital-business-card/)
 - [Source code](https://github.com/helenclx/Scrimba-React-Solo-Projects/tree/main/1-digital-business-card)
 
 ## Travel Journal
 
-![](./2-travel-journal/screenshot.png)
+![Screenshot of the travel journal solo project](./2-travel-journal/screenshot.png)
 
 - [Live site](https://helenchong.dev/Scrimba-React-Solo-Projects/2-travel-journal/)
 - [Source code](https://github.com/helenclx/Scrimba-React-Solo-Projects/tree/main/2-travel-journal)
 
 ## Quizzical
 
-![](./3-quizzical/screenshot-start.png)
-![](./3-quizzical/screenshot-questions.png)
-![](./3-quizzical/screenshot-answers.png)
+![Screenshot of the start of Quizzical's quiz game](./3-quizzical/screenshot-start.png)
+![Screenshot of a list of quuestions from the Quizzical solo project](./3-quizzical/screenshot-questions.png)
+![Screenshot of Quizzical displaying the quiz result](./3-quizzical/screenshot-answers.png)
 
 - [Live site](https://helenchong.dev/Scrimba-React-Solo-Projects/3-quizzical/)
 - [Source code](https://github.com/helenclx/Scrimba-React-Solo-Projects/tree/main/3-quizzical)
